@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Personal Notes</title>
+</head>
+<body>
+    <h1>Access Portal</h1>
+    <input type="text" id="url" placeholder="https://google.com">
+    <button onclick="launch()">Go</button>
+    <br><br>
+    <button onclick="cloak()">Open in Hidden Window</button>
+
+    <script>
+        function launch() {
+            const url = document.getElementById('url').value;
+            // This links to your proxy engine (Step 3)
+            window.location.href = "/service/" + btoa(url); 
+        }
+
+        function cloak() {
+            var win = window.open();
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
+            var iframe = win.document.createElement('iframe');
+            iframe.style.border = 'none';
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.src = window.location.href;
+            win.document.body.appendChild(iframe);
+        }
+    </script>
+</body>
+</html>
